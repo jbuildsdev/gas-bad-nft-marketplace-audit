@@ -1,3 +1,14 @@
 /*
 * Verification of Gas Bad Nft Marketplace
 */ 
+
+ghost mathint listingUpdatesCount;
+ghost mathint log4Count;
+
+hook Sstore s_listings[KEY address nftAddress][KEY uint256 tokenId].price uint256 price{
+listingUpdatesCount = listingUpdatesCount +1;
+}
+
+hook LOG4(uint offset, uint length, bytes32 t1, bytes32 t2, bytes32 t3, bytes32 t4){
+    log4Count = log4Count +1;
+}
